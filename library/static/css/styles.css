@@ -1,0 +1,14 @@
+body{
+    font-family: 'PT Sans', sans-serif;
+    /* background-image: ; */
+    background-size: cover;
+}
+
+.container{
+    color: white;
+    text-shadow: 2px 2px 12px #000000;
+}
+.container, hr{
+    border: 5px solid white;
+    border-radius: 5px;
+}

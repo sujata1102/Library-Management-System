@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block 'main' %}
+
+    <!-- Main Content-->
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <h1>Books</h1>
+                <hr class="my-3" />
+                {% for x in books %}
+                <!-- book preview-->
+                <div class="book-preview">
+                    <a href="{% url 'book_info' %}">
+                        <h4 class="book-name">{{x.bname}}</h4>
+                        <h5 class="book-author">{{x.author}}</h5>
+                    </a>
+                    <p class="post-meta">
+                        Uploaded by {{x.uname}} 
+                        on {{x.dt}}
+                    </p>
+                   
+                </div>
+                <!-- Divider-->
+                <hr class="my-3" />
+                {% endfor %}
+                
+                <!-- Pager-->
+                <nav aria-label="...">
+                    {% if books.has_other_pages %}
+                      <ul class="pagination">
+                        {% if books.has_previous %}
+                          <li class="page-item"><a class="page-link" href="?page={{ books.previous_page_number }}">Previous</a></li>
+                        {% else %}
+                          <li class="page-item disabled"><span class="page-link">Previous</span></li>
+                        {% endif %}
+               
+                        {% for i in books.paginator.page_range %}
+                          {% if books.number == i %}
+                          <li class="page-item active" aria-current="page"><a class="page-link" href="#">{{ i }}</a></li>
+                          {% else %}
+                          <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+                          {% endif %}
+                        {% endfor %}
+               
+                        {% if books.has_next %}
+                          <li class="page-item"><a class="page-link" href="?page={{ books.next_page_number }}">Next</a></li>
+                        {% else %}
+                          <li class="page-item disabled"><span class="page-link">Next</span></li>
+                        {% endif %}
+                      </ul>
+                    {% endif %}
+                    </nav>
+            </div>
+        </div>
+    </div>
+
+{% endblock 'main' %}

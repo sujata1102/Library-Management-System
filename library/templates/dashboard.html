@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block 'main' %}
+  
+    <h3>Records:</h3>
+    <!-- <div class="col md 3">
+        <a href="{% url 'add_book' %}"><button class="btn btn-success">Add Book</button></a>
+      </div> -->
+      <div class="col md 12">
+          <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">Book Name</th>
+                  <th scope="col">Author</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">ISBN number</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Reference Link</th>
+                  <th scope="col">Edit</th>
+                  <th scope="col">Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for x in data %}
+                  <tr>
+                    <th scope="row">{{x.bname}}</th>
+                    <td>{{x.author}}</td>
+                    <td>{{x.price}}</td>
+                    <td>{{x.isbn}}</td>
+                    <td>{{x.desc}}</t bd>
+                    <td>{{x.book_link}}</td>
+                    <td><a href="edit/{{x.id}}"><button class="btn btn-warning">Edit</button></a></td>
+                    <td><a href="delete/{{x.id}}"><button class="btn btn-danger">Delete</button></a></td>
+                  </tr>   
+              {% endfor %}
+              </tbody>
+          </table>
+      </div>
+{% endblock 'main' %}

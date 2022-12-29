@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block 'main' %}
+<form class='text-center mt-5 container' style="width: 60%;" action="{% url 'add_book' %}" method='POST'>
+    {% csrf_token %}
+     <!-- <h1 class='display-4 text-center'>Add Book</h1><br> -->
+     <div class="input-group mb-3">
+          <div class="input-group-prepend">
+               <span class="input-group-text"><i class="fa fa-book"></i></span>
+          </div>
+          <input type="text" class="form-control" name="bname" placeholder="Name" required autofocus>
+     </div>
+     <div class="input-group mb-3">
+          <div class="input-group-prepend">
+               <span class="input-group-text"><i class="fa fa-user"></i></span>
+          </div>
+          <input type="text" class="form-control" name='author' placeholder="Author" required>
+     </div>
+     <div class="input-group mb-3">
+        <div class="input-group-prepend">
+             <span class="input-group-text"><i class="fa fa-money"></i></span>
+        </div>
+        <input type="text" class="form-control" name='price' placeholder="Price" required>
+    </div>
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-copy"></i></span>
+        </div>
+        <input type="text" class="form-control" name='isbn' placeholder="ISBN" required>
+    </div>
+     
+     <textarea name="desc" class="form-control mb-3" cols="30" rows="2" required
+          placeholder="Book Description"></textarea>
+     
+     <div class="input-group mb-3">
+          <div class="input-group-prepend">
+               <span class="input-group-text"><i class="fa fa-copy"></i></span>
+          </div>
+          <input type="file" class="form-control" name='upload' placeholder="upload book" required>
+      </div>
+
+      <div class="input-group mb-3">
+          <div class="input-group-prepend">
+               <span class="input-group-text"><i class="fa fa-copy"></i></span>
+          </div>
+          <input type="text" class="form-control" name='book_link' placeholder="reference book link" required>
+      </div>
+
+     <button class='btn btn-lg btn-primary btn-block' type='submit'>Submit</button>
+</form>
+
+{% endblock 'main' %}
